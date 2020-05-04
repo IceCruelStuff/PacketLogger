@@ -15,13 +15,14 @@ namespace Eren5960\PacketInfo;
 
 use pocketmine\event\Listener;
 use pocketmine\event\server\DataPacketReceiveEvent;
-use pocketmine\network\mcpe\protocol\DataPacket;
+use pocketmine\network\protocol\DataPacket;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\Task;
 use pocketmine\utils\Terminal;
 
 class PacketInfo extends PluginBase implements Listener{
+
     /** @var string[] */
     private $not = [];
     /** @var int */
@@ -65,4 +66,5 @@ class PacketInfo extends PluginBase implements Listener{
         echo Terminal::$COLOR_AQUA . "Received packet count in 1 minute: " . Terminal::$COLOR_GOLD . $this->count . "\n";
         $this->count = 0;
     }
+
 }
