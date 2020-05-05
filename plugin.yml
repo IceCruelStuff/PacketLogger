@@ -1,5 +1,5 @@
 name: PacketInfo
 version: 1
-api: 4.0.0
+api: 1.12.0
 main: Eren5960\PacketInfo\PacketInfo
 author: Eren5960
