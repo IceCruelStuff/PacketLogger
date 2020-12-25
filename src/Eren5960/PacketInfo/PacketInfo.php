@@ -20,6 +20,7 @@ use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\Task;
 use pocketmine\utils\Terminal;
+use Eren5960\PacketInfo\task\SendPacketCountTask;
 
 class PacketInfo extends PluginBase implements Listener {
 
@@ -35,7 +36,7 @@ class PacketInfo extends PluginBase implements Listener {
     public function onEnable(): void {
         $this->not = $this->getConfig()->get("no-send-info-packets", []);
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->getScheduler()->scheduleRepeatingTask(new class($this) extends Task{private $plugin;public function __construct(PacketInfo $plugin){$this->plugin = $plugin;}public function onRun(int $currentTick){$this->plugin->sendReceivedPacketCount();}}, 1200);
+        $this->getScheduler()->scheduleRepeatingTask(new SendPacketCountTask($this), 1200);
     }
 
     public function onReceivePacket(DataPacketReceiveEvent $event) {
